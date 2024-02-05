@@ -1,0 +1,43 @@
+
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/voucher?useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  h2:
+    console:
+      enabled: true
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761//eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+
+
+#Swagger
+springdoc:
+  api-docs:
+    version: openapi_3_0
+    enabled: true
